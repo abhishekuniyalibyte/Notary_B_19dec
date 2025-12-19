@@ -1,6 +1,7 @@
 """
-Track B - Milestone 1: Data Models
+Track B - Milestone 1 & 2: Data Models
 Customer and Certificate data structures for the notary document system.
+Milestone 2: Added Drive metadata support.
 """
 
 from datetime import datetime
@@ -31,6 +32,7 @@ class Customer(BaseModel):
     name: str = Field(..., description="Customer name (person or company)")
     customer_type: CustomerType = Field(..., description="Type: PERSON or COMPANY")
     folder_path: str = Field(..., description="Absolute path to customer folder")
+    drive_folder_id: Optional[str] = Field(None, description="Google Drive folder ID (Milestone 2)")
     created_at: datetime = Field(default_factory=datetime.now)
 
     class Config:
@@ -52,6 +54,9 @@ class CertificateRecord(BaseModel):
     filename: str = Field(..., description="Original certificate filename")
     file_path: str = Field(..., description="Full path to certificate file")
     has_error_prefix: bool = Field(default=False, description="Whether filename starts with ERROR")
+    drive_file_id: Optional[str] = Field(None, description="Google Drive file ID (Milestone 2)")
+    mime_type: Optional[str] = Field(None, description="MIME type of file (Milestone 2)")
+    file_size: Optional[int] = Field(None, description="File size in bytes (Milestone 2)")
     indexed_at: datetime = Field(default_factory=datetime.now)
 
     class Config:

@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
-Track B - Milestone 1: Main CLI Entry Point
+Track B - Milestone 1 & 2: Main CLI Entry Point
 Test and demonstrate the customer registry and certificate indexing system.
 
 Usage:
+    # Milestone 1: Local folder scanning
     python main.py --scan <customer_folders_path>
-    python main.py --load
-    python main.py --customer <customer_name>
     python main.py --stats
+    python main.py --customer <customer_name>
+
+    # Milestone 2: Google Drive integration
+    python main.py --drive-auth
+    python main.py --drive-list
+    python main.py --drive-download [--folder-id <id>]
+    python main.py --drive-scan
 """
 
 import argparse
@@ -18,6 +24,14 @@ from folder_scanner import FolderScanner
 from storage import StorageManager
 from certificate_tracker import CertificateTracker
 from models import CustomerRegistry
+
+# Milestone 2 imports
+try:
+    from drive_integration import DriveIntegration
+    from metadata_indexer import MetadataIndex
+    DRIVE_AVAILABLE = True
+except ImportError:
+    DRIVE_AVAILABLE = False
 
 
 def print_header(text: str):
@@ -201,13 +215,106 @@ def list_customers():
         print(f"  {type_marker} {customer.name} ({cert_count} certificates)")
 
 
+# ============================================================================
+# MILESTONE 2: GOOGLE DRIVE COMMANDS
+# ============================================================================
+
+def drive_authenticate():
+    """Authenticate with Google Drive"""
+    if not DRIVE_AVAILABLE:
+        print("Error: Google Drive dependencies not installed.")
+        print("Install with: pip install -r requirements.txt")
+        sys.exit(1)
+
+    print_header("GOOGLE DRIVE AUTHENTICATION")
+
+    integration = DriveIntegration()
+    if integration.authenticate():
+        print("\n✓ Authentication successful!")
+        print("You can now use --drive-list and --drive-download commands.")
+    else:
+        print("\n✗ Authentication failed.")
+        sys.exit(1)
+
+
+def drive_list_folders(folder_id: str = None):
+    """List folders in Google Drive"""
+    if not DRIVE_AVAILABLE:
+        print("Error: Google Drive dependencies not installed.")
+        sys.exit(1)
+
+    integration = DriveIntegration()
+    if not integration.authenticate():
+        print("Authentication failed.")
+        sys.exit(1)
+
+    integration.list_drive_folders(folder_id)
+
+
+def drive_download(folder_id: str = None):
+    """Download customer folders from Google Drive"""
+    if not DRIVE_AVAILABLE:
+        print("Error: Google Drive dependencies not installed.")
+        sys.exit(1)
+
+    integration = DriveIntegration()
+    if not integration.authenticate():
+        print("Authentication failed.")
+        sys.exit(1)
+
+    if folder_id:
+        # Download specific folder
+        print(f"\nDownloading folder ID: {folder_id}")
+        registry = integration.download_specific_folder(folder_id)
+    else:
+        # Download all customer folders
+        registry = integration.download_and_index()
+
+    print("\n" + "=" * 70)
+    print("  DOWNLOAD COMPLETE")
+    print("=" * 70)
+    print(f"\nTotal Customers: {registry.total_customers}")
+    print(f"Total Certificates: {registry.total_certificates}")
+
+
+def drive_scan_local():
+    """Scan locally downloaded Drive files"""
+    if not DRIVE_AVAILABLE:
+        print("Error: Google Drive dependencies not installed.")
+        sys.exit(1)
+
+    integration = DriveIntegration()
+    registry = integration.scan_local_downloads()
+
+    print("\n" + "=" * 70)
+    print("  SCAN COMPLETE")
+    print("=" * 70)
+    print(f"\nTotal Customers: {registry.total_customers}")
+    print(f"Total Certificates: {registry.total_certificates}")
+
+
+def show_metadata_stats():
+    """Show file metadata statistics"""
+    if not DRIVE_AVAILABLE:
+        print("Error: Google Drive dependencies not installed.")
+        sys.exit(1)
+
+    index = MetadataIndex()
+    if not index.load():
+        print("No metadata index found.")
+        print("Run --drive-download first to download and index files.")
+        sys.exit(1)
+
+    print(index.get_summary())
+
+
 def main():
     """Main entry point"""
     parser = argparse.ArgumentParser(
-        description="Track B Milestone 1 - Customer Registry System",
+        description="Track B Milestone 1 & 2 - Customer Registry System",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Examples:
+Milestone 1 Examples (Local Files):
   # Scan customer folders
   python main.py --scan /path/to/customer/folders
 
@@ -222,18 +329,46 @@ Examples:
 
   # Search certificates
   python main.py --search "BPS"
+
+Milestone 2 Examples (Google Drive):
+  # Authenticate with Google Drive
+  python main.py --drive-auth
+
+  # List folders in Drive
+  python main.py --drive-list
+
+  # Download all customer folders from Drive
+  python main.py --drive-download
+
+  # Download specific folder
+  python main.py --drive-download --folder-id <drive_folder_id>
+
+  # Scan locally downloaded files
+  python main.py --drive-scan
+
+  # Show metadata statistics
+  python main.py --metadata-stats
         """
     )
 
+    # Milestone 1 arguments
     parser.add_argument('--scan', metavar='PATH', help='Scan customer folders at specified path')
     parser.add_argument('--stats', action='store_true', help='Show detailed statistics')
     parser.add_argument('--customer', metavar='NAME', help='Show details for specific customer')
     parser.add_argument('--list', action='store_true', help='List all customers')
     parser.add_argument('--search', metavar='TERM', help='Search certificates by filename')
 
+    # Milestone 2 arguments
+    parser.add_argument('--drive-auth', action='store_true', help='Authenticate with Google Drive')
+    parser.add_argument('--drive-list', action='store_true', help='List folders in Google Drive')
+    parser.add_argument('--drive-download', action='store_true', help='Download customer folders from Drive')
+    parser.add_argument('--drive-scan', action='store_true', help='Scan locally downloaded Drive files')
+    parser.add_argument('--folder-id', metavar='ID', help='Specific Drive folder ID to download')
+    parser.add_argument('--metadata-stats', action='store_true', help='Show file metadata statistics')
+
     args = parser.parse_args()
 
-    # Execute command
+    # Execute Milestone 1 commands
     if args.scan:
         scan_customers(args.scan)
 
@@ -260,6 +395,22 @@ Examples:
             status_marker = "❌" if cert.has_error_prefix else "✓"
             inst_str = f"[{cert.institution}]" if cert.institution else ""
             print(f"  {status_marker} {customer_name} / {inst_str} {cert.filename}")
+
+    # Execute Milestone 2 commands
+    elif args.drive_auth:
+        drive_authenticate()
+
+    elif args.drive_list:
+        drive_list_folders(args.folder_id)
+
+    elif args.drive_download:
+        drive_download(args.folder_id)
+
+    elif args.drive_scan:
+        drive_scan_local()
+
+    elif args.metadata_stats:
+        show_metadata_stats()
 
     else:
         parser.print_help()

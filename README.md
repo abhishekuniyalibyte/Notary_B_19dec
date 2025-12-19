@@ -1,7 +1,7 @@
 # Track B - Notarial Certificate Generation System
 
 **Version:** Milestone 1 Complete
-**Language:** python3.11 (Python 3.11.14)
+**Language:** python3.10
 **Purpose:** Document intelligence and certificate generation for Uruguayan notaries
 
 ---

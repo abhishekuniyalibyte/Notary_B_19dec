@@ -1,2 +1,15 @@
+# Milestone 1: Core dependencies
 pydantic>=2.0.0
 pydantic-settings>=2.0.0
+
+# Milestone 2: Google Drive integration
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.1
+google-api-python-client>=2.100.0
+
+# Milestone 2: File type detection (optional but recommended)
+python-magic>=0.4.27
+# Note: On Linux, also install: sudo apt-get install libmagic1
+# On macOS: brew install libmagic
+# On Windows: pip install python-magic-bin

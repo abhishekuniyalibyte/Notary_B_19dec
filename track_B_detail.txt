@@ -1,0 +1,99 @@
+TRACK B — DOCUMENT INTELLIGENCE & CERTIFICATE GENERATION
+
+“The system that reads documents and writes certificates.”
+
+What Track B IS
+
+Track B is the operational layer.
+It handles documents, data extraction, templates, and output generation.
+
+What Track B DOES (Exactly)
+
+Read customer folders
+
+1 folder = 1 person/company
+
+Index certificate history
+
+Extract data from documents
+
+PDF / DOCX / JPG
+
+OCR when needed
+
+Normalize extracted information
+
+Names
+
+IDs
+
+Dates
+
+Institutions
+
+Learn / apply certificate templates
+
+Notary-specific style
+
+Institution-specific formats
+
+Generate certificate drafts
+
+Spanish
+
+DOCX / PDF
+
+Apply legal decision
+
+Show OK / ERROR
+
+Highlight issues from Track A
+
+Incorporate notary feedback
+
+Adjust templates
+
+Improve formatting
+
+What Track B DOES NOT DO
+
+❌ Interpret law
+
+❌ Decide legal validity
+
+❌ Reference articles
+
+❌ Mark ERROR on its own
+
+Track B Inputs & Outputs
+
+Input
+
+{
+  "files": [...],
+  "validation_result": {...}
+}
+
+
+Output
+
+Draft certificate (DOCX / PDF)
+
+Highlighted issues (if any)
+
+Track B Tech Stack
+
+Python
+
+Google Drive API
+
+OCR (Tesseract / Vision)
+
+Jinja2 templates
+
+PDF / DOCX generation
+
+Mental Model
+
+“I am the notary’s document assistant.”
+

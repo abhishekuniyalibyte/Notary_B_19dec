@@ -1,0 +1,228 @@
+{
+  "certificado_hechos": {
+    "base_legal": {
+      "articulo_principal": 248,
+      "literal": "a"
+    },
+    "requisitos": [
+      {
+        "id": "objeto_del_certificado",
+        "descripcion": "Acto, hecho o situación jurídica objeto del certificado",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 249,
+          "literal": "a"
+        }
+      },
+      {
+        "id": "documento_fuente",
+        "descripcion": "Documento público o privado del cual resulta el acto o hecho certificado",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 249,
+          "literal": "b"
+        }
+      },
+      {
+        "id": "exhibicion_o_compulsa",
+        "descripcion": "Exhibición del documento o compulsa personal del escribano",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 249,
+          "literal": "c"
+        }
+      },
+      {
+        "id": "conocimiento_personal_del_escribano",
+        "descripcion": "Constancia de conocimiento personal del escribano, cuando corresponda",
+        "obligatorio": false,
+        "fuente_legal": {
+          "articulo": 249
+        }
+      }
+    ]
+  },
+ 
+  "certificado_firmas": {
+    "base_legal": {
+      "articulo_principal": 248,
+      "literal": "b"
+    },
+    "requisitos": [
+      {
+        "id": "individualizacion_otorgantes",
+        "descripcion": "Individualización de los otorgantes",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 250,
+          "literal": "a",
+          "referencia_cruzada": {
+            "articulo": 130,
+            "proposito": "Forma de individualización"
+          }
+        }
+      },
+      {
+        "id": "identificacion_otorgantes",
+        "descripcion": "Identificación por conocimiento personal o documento oficial",
+        "obligatorio": true,
+        "puede_vencer": true,
+        "fuente_legal": {
+          "articulo": 250,
+          "literal": "b"
+        }
+      },
+      {
+        "id": "lectura_del_documento",
+        "descripcion": "Lectura del documento por el escribano y recabación del otorgamiento",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 250,
+          "literal": "c",
+          "referencia_cruzada": {
+            "articulo": 150,
+            "proposito": "Lectura y otorgamiento"
+          }
+        }
+      },
+      {
+        "id": "firma_en_presencia",
+        "descripcion": "Firma del documento en presencia del escribano",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 250,
+          "literal": "d",
+          "referencia_cruzada": {
+            "articulo": 162,
+            "proposito": "Forma de suscripción"
+          }
+        }
+      },
+      {
+        "id": "requerimiento_expreso",
+        "descripcion": "Requerimiento expreso de la intervención notarial",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 253
+        }
+      }
+    ],
+    "requisitos_condicionales": [
+      {
+        "condicion": "otorgante_no_sabe_o_no_puede_firmar",
+        "requisitos": [
+          {
+            "id": "testigos_instrumentales",
+            "descripcion": "Intervención de dos testigos instrumentales",
+            "obligatorio": true,
+            "fuente_legal": {
+              "articulo": 252
+            }
+          },
+          {
+            "id": "impresion_digital",
+            "descripcion": "Impresión digital del otorgante",
+            "obligatorio": false,
+            "fuente_legal": {
+              "articulo": 252
+            }
+          }
+        ]
+      }
+    ]
+  },
+ 
+  "certificado_ratificacion": {
+    "base_legal": {
+      "articulo_principal": 248,
+      "literal": "c"
+    },
+    "requisitos": [
+      {
+        "id": "individualizacion_otorgantes",
+        "descripcion": "Individualización de los otorgantes",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 251,
+          "literal": "a",
+          "referencia_cruzada": {
+            "articulo": 130,
+            "proposito": "Forma de individualización"
+          }
+        }
+      },
+      {
+        "id": "identificacion_otorgantes",
+        "descripcion": "Identificación por documento oficial o conocimiento personal",
+        "obligatorio": true,
+        "puede_vencer": true,
+        "fuente_legal": {
+          "articulo": 251,
+          "literal": "b"
+        }
+      },
+      {
+        "id": "ratificacion_contenido_y_firma",
+        "descripcion": "Ratificación del contenido y reconocimiento de firmas",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 251,
+          "literal": "c"
+        }
+      },
+      {
+        "id": "suscripcion_y_autorizacion",
+        "descripcion": "Suscripción del certificado y autorización del escribano",
+        "obligatorio": true,
+        "fuente_legal": {
+          "articulo": 251,
+          "literal": "d"
+        }
+      }
+    ]
+  },
+ 
+  "reglas_testigos": {
+    "descripcion": "Reglas aplicables a testigos y sujetos auxiliares",
+    "fuente_legal": {
+      "articulo": 254,
+      "referencia_cruzada": {
+        "articulo": 145,
+        "proposito": "Idoneidad de los testigos"
+      }
+    }
+  },
+ 
+  "requisitos_globales_certificado": {
+    "base_legal": {
+      "articulo": 255
+    },
+    "campos": [
+      {
+        "id": "nombre_solicitante",
+        "descripcion": "Nombre y apellido de la persona solicitante"
+      },
+      {
+        "id": "constancia_cumplimiento_legal",
+        "descripcion": "Constancia del cumplimiento de los requisitos legales"
+      },
+      {
+        "id": "destinatario",
+        "descripcion": "Destinatario del certificado"
+      },
+      {
+        "id": "lugar_expedicion",
+        "descripcion": "Lugar de expedición"
+      },
+      {
+        "id": "fecha_expedicion",
+        "descripcion": "Fecha de expedición"
+      },
+      {
+        "id": "firma_y_sello_escribano",
+        "descripcion": "Firma, rúbrica y sello del escribano autorizante"
+      }
+    ]
+  }
+}
+ 

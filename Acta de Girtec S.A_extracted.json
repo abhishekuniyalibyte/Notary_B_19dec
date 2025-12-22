@@ -2,9 +2,9 @@
   "document_type": "ACTA DE ASAMBLEA GENERAL EXTRAORDINARIA",
   "rut": null,
   "denominacion": "GIRTEC S.A.",
-  "constancia_number": "10216/6",
+  "constancia_number": null,
   "fecha": "11 de octubre 2012",
-  "domicilio_fiscal": "Br. España 2282",
+  "domicilio_fiscal": "Br. Espafia 2282",
   "tipo_contribuyente": null,
   "estado": null,
   "emision": null,
@@ -12,21 +12,17 @@
   "other_fields": {
     "hora": "11 hs.",
     "ciudad": "Montevideo",
-    "asamblea_type": "General Extraordinaria",
-    "convocatoria": "resolución del directorio de fecha 10 de octubre de 2012",
-    "accionistas_presentes": "Eduardo, Gabriel y Daniel Bomio",
-    "porcentaje_capital_integrado": "100%",
-    "organo_control_interno": "carece de órgano de control interno",
+    "notario": "ESC. ADRIANA INCIARTE PAIVA - 10216/6",
+    "asistencia_accionistas": "Eduardo, Gabriel y Daniel Bomio",
+    "capital_integrado": "100%",
     "orden_del_dia": [
-      "Designación del Presidente y Secretario de la Asamblea",
-      "Consideración de las modificaciones legales impuestas por la Ley N° 18930, Decreto Reglamentario 247/2012 y Comunicación del BCU 2012/144",
-      "Designación de dos accionistas para firmar el acta"
+      "Designacion del Presidente y Secretario de la Asamblea",
+      "Consideracién de las modificaciones legales impuestas por la Ley N° 18930, Decreto Reglamentario 247/2012 y Comunicacién del BCU 2012/144",
+      "Designacién de dos accionistas para firmar el acta"
     ],
-    "presidente_asamblea": "Eduardo Victor Bomio Claveria",
-    "secretario_asamblea": "Gabriel Bomio",
-    "modificacion_legal": "Ampararse en lo dispuesto por el art. 17 de la Ley 18.930",
-    "detalle_modificacion": "sustituir 'al portador' por 'nominativas endosables'",
-    "representantes_legales": "Maria Cristina Olaso Jung y/o Diego Puceiro Pan",
-    "firmante_acta": "Eduardo Victor Bomio Claveria"
+    "resoluciones": [
+      "Ampararse en lo dispuesto por el art. 17 de la Ley 18.930",
+      "Designa a los Dres. Maria Cristina Olaso Jung y/o Diego Puceiro Pan para efectuar todos los tramites que correspondan"
+    ]
   }
 }

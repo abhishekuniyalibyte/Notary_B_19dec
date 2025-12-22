@@ -1,2 +1,27 @@
+# Customer data
 Notaria_client_data
+
+# Python environment
 venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Generated data
+data/
+downloaded_files/
+
+# Google OAuth credentials (Milestone 2)
+credentials.json
+token.pickle
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

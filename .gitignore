@@ -1,6 +1,9 @@
 # Customer data
 Notaria_client_data
 
+# llm api key
+.env
+
 # Python environment
 venv
 __pycache__/

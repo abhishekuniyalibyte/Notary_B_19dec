@@ -25,6 +25,9 @@ pytesseract>=0.3.10
 Pillow>=10.0.0
 # Note: Also requires system package: sudo apt-get install tesseract-ocr tesseract-ocr-spa poppler-utils
 
+# Milestone 4: Field normalization (uses only Python stdlib - no additional deps needed)
+# All functionality uses: re, datetime, json (built-in)
+
 # FastAPI
 fastapi
 uvicorn

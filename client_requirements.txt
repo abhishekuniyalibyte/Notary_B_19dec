@@ -19,8 +19,9 @@ Title examination
 When a person wants to buy a property, the notary must verify that the seller is the legitimate owner and that the property has no encumbrances. This requires registry information, municipal records, and data from public agencies. This is based on notarial requirements outlined here: https://publicaciones.fder.edu.uy/index.php/me/article/view/128/121
 
 
-above are the requirements and the reply to how we are going to do ws this:
+above are the requirements and the reply to how we are going to do this:
 
+---
 
 Below is my response(HS):
 
@@ -48,7 +49,7 @@ The agent will draft the certificate fully in Spanish using the chosen template 
 7. Final Output
 Once the notary approves, the agent will generate the final document (PDF/DOCX) ready for download. A future roadmap can include automatic upload to the governmental portal.
 
-
+---
 
 Client Response after giving the folders:
 Each folder is a costumer ( company or a person ), if you see the word ERROR at the beginning of a certificate is because the notary saw issues with the data / conditions
@@ -56,3 +57,37 @@ And you can see a lot of examples of certificates created per customer
 Cool! Check the docs and let me know
 Everything is in Spanish
  
+
+---
+
+9:34 pm, 22/12/2025] Gitesh Sir: To finalize the flow correctly though the provided documents are very helpful but I need few clarifications:
+1. What are the certificate types the system should support?
+(e.g. certification of signatures, certification of facts, ratification, personería, BPS, etc.)
+2. Will the notary always select the certificate type, or should the system try to infer it from the uploaded documents?
+ 
+3.  Files that start with “ERROR”:
+* Are these certificates that were legally invalid?
+* Or drafts that failed some requirement and need correction?
+4.  For each certificate type, is there a fixed list of required documents, or does it vary case by case?
+5. Which documents should be treated as expirable (ID, BPS, powers, statutes, etc.)?
+ 
+6. Are certificate templates fixed, or can each notary modify wording and structure?
+[9:34 pm, 22/12/2025] Gitesh Sir: Hey!!
+[9:34 pm, 22/12/2025] Gitesh Sir: You need to check these words  resoluciÃ³n
+[9:35 pm, 22/12/2025] Gitesh Sir: Ã³ is an error of the ocr , it should be ó
+[9:35 pm, 22/12/2025] Gitesh Sir: So instead of resoluciÃ³n, the correct word is resolución
+[9:35 pm, 22/12/2025] Gitesh Sir: I see the same error around the output
+[9:35 pm, 22/12/2025] Gitesh Sir: The “tildes”
+[9:35 pm, 22/12/2025] Gitesh Sir: To finalize the flow correctly though the provided documents are very helpful but I need few clarifications:
+1. What are the certificate types the system should support?
+(e.g. certification of signatures, certification of facts, ratification, personería, BPS, etc.) 
+Every type , meaning , each type has its own requirements, if the agent cannot find those requirements online it has to ask the notary to include the requirements doc
+2. Will the notary always select the certificate type, or should the system try to infer it from the uploaded documents?
+The notary should specify which certificate he wants. The agent could look for  examples of that same certificate in the notary drive ( for sure he did at least one in the past ) 
+3.  Files that start with “ERROR”:
+* Are…
+[9:35 pm, 22/12/2025] Gitesh Sir: Please le me know if you have more doubts
+[9:35 pm, 22/12/2025] Gitesh Sir: We can have a zoom meeting to validate requirements, and speak with the notary
+
+
+---

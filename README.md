@@ -21,14 +21,14 @@ This system helps Uruguayan notaries automate the creation of notarial certifica
 
 ## 🎯 Project Status
 
-### Milestone Progress (2/9 Complete)
+### Milestone Progress (3/9 Complete)
 
 | # | Milestone | Status | Description |
 |---|-----------|--------|-------------|
 | 1 | **Project Base & Folder Model** | ✅ Complete | Local folder scanning, customer indexing |
 | 2 | **Google Drive & File Ingestion** | ✅ Complete | OAuth, file downloading, metadata indexing |
-| 3 | Document Text Extraction | 🔄 Next | PDF/DOCX parsing, OCR for images |
-| 4 | Data Field Extraction | ⏳ Pending | Entity recognition, field normalization |
+| 3 | **Document Text Extraction** | ✅ Complete | PDF parsing, OCR, LLM data extraction, legal validation |
+| 4 | Data Field Extraction | 🔄 Next | Entity recognition, field normalization |
 | 5 | Template Discovery | ⏳ Pending | Learn certificate styles and patterns |
 | 6 | Certificate Generation | ⏳ Pending | Generate Spanish certificate drafts |
 | 7 | Track A Integration | ⏳ Pending | Legal validation integration |
@@ -50,6 +50,13 @@ This system helps Uruguayan notaries automate the creation of notarial certifica
 - ✅ File type detection (PDF, DOCX, images)
 - ✅ Metadata indexing with Drive IDs
 - ✅ Seamless integration with registry
+
+**Milestone 3:**
+- ✅ PDF text extraction with pdfplumber
+- ✅ OCR for scanned PDFs (Tesseract)
+- ✅ LLM-based data extraction (Groq Llama 4)
+- ✅ Legal validation (Articles 248-255 compliant)
+- ✅ FastAPI server for testing
 
 ---
 
@@ -124,6 +131,8 @@ python main.py --metadata-stats
 | `file_detector.py` | File type detection | M2 |
 | `metadata_indexer.py` | File metadata storage | M2 |
 | `drive_integration.py` | Drive-to-registry orchestration | M2 |
+| `extract_pdf_data2.py` | PDF extraction & legal validation | M3 |
+| `api.py` | FastAPI server for PDF extraction | M3 |
 
 > **Detailed file descriptions:** See [FILE_STRUCTURE.md](FILE_STRUCTURE.md)
 
@@ -199,6 +208,29 @@ MetadataIndexer → DriveIntegration → CustomerRegistry → Storage → CLI
 | `--drive-scan` | Re-scan local downloads |
 | `--metadata-stats` | Show file metadata statistics |
 
+### Milestone 3 Commands
+
+**PDF Data Extraction:**
+
+```bash
+# Extract data from a PDF certificate
+python3 extract_pdf_data2.py /path/to/certificate.pdf
+
+# This generates 2 files:
+# 1. *_extracted.json - Raw extracted data
+# 2. *_validation_legal.json - Legal validation (Articles 248-255)
+```
+
+**FastAPI Testing:**
+
+```bash
+# Run the API server
+uvicorn api:app --reload
+
+# Access at http://localhost:8000/docs
+# Upload PDFs and get extraction + validation results
+```
+
 ---
 
 ## 🎓 Next Steps
@@ -213,11 +245,11 @@ MetadataIndexer → DriveIntegration → CustomerRegistry → Storage → CLI
 2. Check [track_B_detail.txt](track_B_detail.txt) for Track B boundaries
 3. See [client_requirements.txt](client_requirements.txt) for original specifications
 
-**Coming in Milestone 3:**
-- PDF text extraction with pdfplumber
-- DOCX text extraction with python-docx
-- OCR for scanned documents (Tesseract)
-- Spanish text corpus building
+**Coming in Milestone 4:**
+- Entity recognition and field normalization
+- Structured data extraction
+- Multi-document processing
+- Data validation and quality checks
 
 ---
 
@@ -245,6 +277,6 @@ For detailed documentation:
 
 ---
 
-**Track B - Milestones 1 & 2 Complete **
+**Track B - Milestones 1, 2 & 3 Complete**
 
-*Next: Milestone 3 - Document Text Extraction (OCR + Parsing)*
+*Next: Milestone 4 - Data Field Extraction (Entity Recognition & Normalization)*
